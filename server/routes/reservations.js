@@ -5,8 +5,7 @@ const Reservation = require('../models/Reservation');
 // POST /api/reservations — save reservation
 router.post('/', async (req, res) => {
   try {
-    const { fullName, phone, date, time, guests, specialRequests, reservationReference } = req.body;
-    const reservation = new Reservation({ fullName, phone, date, time, guests, specialRequests, reservationReference });
+    const reservation = new Reservation(req.body);
     const saved = await reservation.save();
     res.status(201).json({ success: true, reservation: saved });
   } catch (error) {

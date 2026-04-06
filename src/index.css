@@ -25,6 +25,44 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
+
+  /* Cursor pointer for ALL interactive elements */
+  button,
+  [role="button"],
+  a,
+  select,
+  summary,
+  [onclick],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="date"],
+  input[type="time"],
+  label[for] {
+    cursor: pointer;
+  }
+
+  /* Date/Time inputs — click anywhere opens picker */
+  input[type="date"],
+  input[type="time"] {
+    position: relative;
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
 }
 
 @layer utilities {
