@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/orders", "destination": "/api/orders" },
+    { "source": "/api/messages", "destination": "/api/messages" },
+    { "source": "/api/reservations", "destination": "/api/reservations" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
