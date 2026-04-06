@@ -2,13 +2,17 @@ const connectDB = require('./lib/db');
 const Order = require('./lib/models/Order');
 
 module.exports = async function handler(req, res) {
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  await connectDB();
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('DB Connection Error:', err);
+    return res.status(500).json({ success: false, message: 'Database connection failed', error: err.message });
+  }
 
   if (req.method === 'POST') {
     try {

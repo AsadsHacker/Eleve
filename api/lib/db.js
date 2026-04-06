@@ -9,11 +9,25 @@ if (!cached) {
 async function connectDB() {
   if (cached.conn) return cached.conn;
 
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(process.env.MONGO_URI).then((m) => m);
+  const MONGO_URI = process.env.MONGO_URI;
+
+  if (!MONGO_URI) {
+    throw new Error('MONGO_URI environment variable is not set');
   }
 
-  cached.conn = await cached.promise;
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGO_URI, {
+      bufferCommands: false,
+    }).then((m) => m);
+  }
+
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
   return cached.conn;
 }
 
