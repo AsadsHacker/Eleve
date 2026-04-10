@@ -23,4 +23,27 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.patch('/:id', async (req, res) => {
+  try {
+    const { status } = req.body;
+    const updated = await Reservation.findByIdAndUpdate(req.params.id, { status }, { new: true });
+    if (!updated) return res.status(404).json({ success: false, message: 'Reservation not found' });
+    res.status(200).json({ success: true, reservation: updated });
+  } catch (error) {
+    console.error('Error updating reservation:', error);
+    res.status(500).json({ success: false, message: 'Failed to update reservation', error: error.message });
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleted = await Reservation.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ success: false, message: 'Reservation not found' });
+    res.status(200).json({ success: true, message: 'Reservation deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting reservation:', error);
+    res.status(500).json({ success: false, message: 'Failed to delete reservation', error: error.message });
+  }
+});
+
 export default router;
