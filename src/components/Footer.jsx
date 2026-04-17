@@ -10,8 +10,7 @@ export default function Footer() {
           
           <div>
             <div className="flex items-center mb-6">
-              <img src="/eleve2.png" alt="ÉLEVÉ" className="w-32 object-contain" />
-              <span className="text-2xl font-heading text-white tracking-widest leading-none">ÉLEVÉ</span>
+              <span className="text-3xl font-heading text-gold tracking-widest leading-none font-bold">ÉLEVÉ</span>
             </div>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Elevated dining experience located in the heart of Clifton, Karachi. We serve luxurious cuisines with uncompromised quality.

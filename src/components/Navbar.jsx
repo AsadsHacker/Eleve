@@ -29,8 +29,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-28">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
-              <img src="/eleve2.png" alt="ÉLEVÉ Logo" className="w-auto h-40 object-contain drop-shadow-lg" />
-              <span className="text-[32px] font-heading text-white tracking-widest leading-none -ml-4">ÉLEVÉ</span>
+              <span className="text-[36px] font-heading text-gold tracking-[0.15em] font-bold leading-none drop-shadow-md">ÉLEVÉ</span>
             </Link>
           </div>
           
